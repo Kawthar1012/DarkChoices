@@ -1,7 +1,13 @@
 services:
   - type: web
     name: DarkChoices
-    env: dotnet
+    env: docker
     plan: free
-    buildCommand: dotnet publish -c Release -o out ./BulkyBookWeb/BulkyBookWeb.csproj
-    startCommand: dotnet out/BulkyBookWeb.dll
+    buildCommand: |
+      apt-get update
+      apt-get install -y wget
+      wget https://dot.net/v1/dotnet-install.sh
+      bash dotnet-install.sh --channel LTS
+      export PATH=$PATH:/root/.dotnet
+      /root/.dotnet/dotnet publish -c Release -o out ./BulkyBookWeb/BulkyBookWeb.csproj
+    startCommand: /root/.dotnet/dotnet out/BulkyBookWeb.dll
