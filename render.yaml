@@ -3,5 +3,5 @@ services:
     name: DarkChoices
     env: dotnet
     plan: free
-    buildCommand: dotnet publish -c Release -o out ./DarkChoices/DarkChoices.csproj
-    startCommand: dotnet out/DarkChoices.dll
+    buildCommand: dotnet publish -c Release -o out ./BulkyBookWeb/BulkyBookWeb.csproj
+    startCommand: dotnet out/BulkyBookWeb.dll
