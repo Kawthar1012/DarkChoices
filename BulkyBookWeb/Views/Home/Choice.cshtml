@@ -1,0 +1,37 @@
+﻿@model BulkyBookWeb.Models.Choice;
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Choice";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="video-container">
+        <video id="main-video" autoplay playsinline>
+            <source src="~/videos/@Model.Video" type="video/mp4">
+        </video>
+
+        @if (!Model.End)
+        {
+            <video id="looping-video" loop playsinline style="display: none;">
+                <source src="~/videos/@Model.Loop" type="video/mp4">
+            </video>
+
+            <div class="choices-overlay" style="display: none;">
+                <button class="choice-button" onclick="choosePath(@JsonConvert.SerializeObject(Model.ChoiceOne))">@Model.ChoiceOneText</button>
+                <button class="choice-button" onclick="choosePath(@JsonConvert.SerializeObject(Model.ChoiceTwo))">@Model.ChoiceTwoText</button>
+            </div>
+        } 
+    </div>
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>

@@ -1,5 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Interactive Trailer";
+﻿@model BulkyBookWeb.Models.Choice
+@using Newtonsoft.Json;
+
+@{
+    ViewData["Title"] = "Dark Choices";
+
+    string choiceJson = JsonConvert.SerializeObject(Model);
 }
 
 <!DOCTYPE html>
@@ -12,7 +17,7 @@
 </head>
 <body>
     <div class="start-button-container">
-        <button class="start-button" onclick="choosePath('choice1')">Commencer</button>
+        <button class="start-button" onclick="choosePath(@choiceJson)">Commencer</button>
     </div>
 
     <script src="js/site.js"></script>
